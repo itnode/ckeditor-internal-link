@@ -485,7 +485,7 @@
 					var that = this;
 					CKEDITOR.plugins.internallink.getLinks({
 						q: this.autocomplete.textbox.value,
-						c: this.url
+						c: data.url.url
 					}, function(err, links) {
 						if(err) {
 							console.error("Error while fetching links:" + err);
