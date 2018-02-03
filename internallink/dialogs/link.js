@@ -127,7 +127,7 @@
 				width: this.textbox.offsetWidth,
 				itemSelectCB: this.itemSelectCB
 			});
-			this.area.getNode().setAttribute('data-empty', 'Nothing for ' + this.textbox.value);
+			this.area.getNode().setAttribute('data-empty', 'Nothing for "' + this.textbox.value + '"');
 
 			//Once all set, call inititialize
 			this.init();
@@ -181,7 +181,7 @@
 
 		Autocomplete.prototype.onSearchTimeout = function() {
 			this.timeoutCount = null;
-			this.area.getNode().setAttribute('data-empty', 'Nothing for ' + this.textbox.value);
+			this.area.getNode().setAttribute('data-empty', 'Nothing for "' + this.textbox.value + '"');
 			this.onSearch();
 		};
 
