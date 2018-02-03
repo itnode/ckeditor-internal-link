@@ -127,6 +127,7 @@
 				width: this.textbox.offsetWidth,
 				itemSelectCB: this.itemSelectCB
 			});
+			this.area.getNode().setAttribute('data-empty', 'Nothing for ' + this.textbox.value);
 
 			//Once all set, call inititialize
 			this.init();
@@ -180,6 +181,7 @@
 
 		Autocomplete.prototype.onSearchTimeout = function() {
 			this.timeoutCount = null;
+			this.area.getNode().setAttribute('data-empty', 'Nothing for ' + this.textbox.value);
 			this.onSearch();
 		};
 
@@ -374,6 +376,18 @@
 				"overflow: auto;",
 				"padding: 0px!important;",
 				"position: relative;",
+				"pointer-events: none;",
+			"}"].join('\n'),
+			
+			[".internal-links:empty:after {",
+				"content: attr(data-empty);",
+				"color: #8a8a8a;",
+				"position: absolute;",
+				"margin-top: -1em;",
+				"top: 50%;",
+				"right: 1%;",
+				"left: 1%;",
+				"text-align: center;",
 			"}"].join('\n'),
 
 			[".internal-links>.internal-link {",
@@ -382,6 +396,7 @@
 				"text-overflow: ellipsis;",
 				"width: 95%!important;",
 				"overflow: hidden;",
+				"pointer-events: auto;",
 			"}"].join('\n'),
 
 			[".internal-link.highlight {",
