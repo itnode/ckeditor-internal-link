@@ -403,6 +403,21 @@
 				elements: [{
 					type: 'text',
 					id: 'linkDisplayText',
+					label: 'Display Text',
+					onChange: function() {},
+					setup: function(data) {
+						if(editor.config.internallinkHideDisplayText) {
+							this.getElement().hide();
+						} else {
+							this.setValue( editor.getSelection().getSelectedText() );
+						}
+					},
+					commit: function( data ) {
+						data.linkText = editor.config.internallinkHideDisplayText ? '' : this.getValue();
+					}
+				}, {
+					type: 'text',
+					id: 'linkSearchText',
 					label: 'Search for page',
 					onChange: function() {
 						
@@ -432,7 +447,6 @@
 			onShow: function() {
 				var editor = this.getParentEditor(),
 					selection = editor.getSelection(),
-					displayTextField = this.getContentElement( 'info', 'linkDisplayText' ).getElement().getParent().getParent(),
 					elements = plugin.getSelectedLink( editor, true ),
 					firstLink = elements[ 0 ] || null;
 
@@ -467,7 +481,7 @@
 				}
 				getLinks = getLinks.bind(this);
 				this.autocomplete = (new Autocomplete({
-											textbox: this.getContentElement('info', 'linkDisplayText').getInputElement().$,
+											textbox: this.getContentElement('info', 'linkSearchText').getInputElement().$,
 											onSearch: getLinks
 										}));
 										
@@ -482,7 +496,7 @@
 				// Collect data from fields.
 				this.commitContent( data );
 
-				data.linkText = this.autocomplete.selected[0];
+				data.linkText = data.linkText || this.autocomplete.selected[0];
 						
 				if ( !data.url )
 					data.url = {};
