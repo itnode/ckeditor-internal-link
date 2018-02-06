@@ -127,7 +127,7 @@
 				width: this.textbox.offsetWidth,
 				itemSelectCB: this.itemSelectCB
 			});
-			this.area.getNode().setAttribute('data-empty', 'Nothing for "' + this.textbox.value + '"');
+			this.area.getNode().setAttribute('data-empty', 'Keine Einträge für "' + this.textbox.value + '"');
 
 			//Once all set, call inititialize
 			this.init();
@@ -181,7 +181,7 @@
 
 		Autocomplete.prototype.onSearchTimeout = function() {
 			this.timeoutCount = null;
-			this.area.getNode().setAttribute('data-empty', 'Nothing for "' + this.textbox.value + '"');
+			this.area.getNode().setAttribute('data-empty', 'Keine Einträge für "' + this.textbox.value + '" gefunden.');
 			this.onSearch();
 		};
 
@@ -368,7 +368,7 @@
 
 		Area.STYLES = [
 			[".internal-links {",
-				"border: 1px solid #bcbcbc!important;",
+				"border: 1px none  #bcbcbc!important;",
 				"margin: 0px!important;",
 				"margin-top: 10px!important;",
 				"margin-left: 1px!important;",
@@ -377,6 +377,7 @@
 				"padding: 0px!important;",
 				"position: relative;",
 				"pointer-events: none;",
+                "background-color: #fff",
 			"}"].join('\n'),
 			
 			[".internal-links:empty:after {",
@@ -397,6 +398,7 @@
 				"width: 95%!important;",
 				"overflow: hidden;",
 				"pointer-events: auto;",
+                "border-top: 1px solid #bcbcbc",
 			"}"].join('\n'),
 
 			[".internal-link.highlight {",
@@ -418,7 +420,7 @@
 				elements: [{
 					type: 'text',
 					id: 'linkDisplayText',
-					label: 'Display Text',
+					label: 'Link Text',
 					onChange: function() {},
 					setup: function(data) {
 						if(editor.config.internallinkHideDisplayText) {
@@ -433,7 +435,7 @@
 				}, {
 					type: 'text',
 					id: 'linkSearchText',
-					label: 'Search for page',
+					label: 'Suche nach Menüpunkt oder Eintrag',
 					onChange: function() {
 						
 					},
