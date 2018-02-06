@@ -525,7 +525,10 @@
 				Autocomplete.Destroy(this.autocomplete);
 				this.autocomplete = null;
 
-				if ( !this._.selectedElements.length ) {
+				if(!data.url.url) {
+					//Nothing selected, nothing to do.
+					delete this._.selectedElements;
+				} else if ( !this._.selectedElements.length ) {
 					insertLinksIntoSelection( editor, data );
 				} else {
 					editLinksInSelection( editor, this._.selectedElements, data );
