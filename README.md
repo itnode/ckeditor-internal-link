@@ -32,22 +32,18 @@ If everything is ok, a Internal-link icon should appear on the CKEditor toolbar,
 #### Response format
   Response MUST be an array of results with 'title' and 'link' details in it
 
- ````js
+ ````json
  {
 	"results": [
 		{
 			"title": "",
-			"link: ""
+			"link": ""
 		}, {
 			"title": "",
-			"link: ""
-		},
-		.
-		.
-		.
-		{
+			"link": ""
+		}, {
 			"title": "",
-			"link: ""
+			"link": ""
 		}
 	]
  }
