@@ -74,9 +74,14 @@
 			};
 		},
 		
-		getLinks: function(params, cb) {
+		getLinks: function(editor, params, cb) {
 			
-			var serviceURL = "https://www.nak-west.de/api/plugin/ckeditor/search?";
+			if(!editor.config.internallinkServiceURL) {
+				alert("Can't fetch links: Missing config.internallinkServiceURL");
+				return;
+			}
+			
+			var serviceURL = editor.config.internallinkServiceURL + '?';
 			
 			serviceURL += Object.keys(params)
 							.map(function(key) {

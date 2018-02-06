@@ -485,7 +485,7 @@
 				
 				function getLinks() {
 					var that = this;
-					CKEDITOR.plugins.internallink.getLinks({
+					CKEDITOR.plugins.internallink.getLinks(editor, {
 						q: this.autocomplete.textbox.value,
 						c: data.url.url
 					}, function(err, links) {
